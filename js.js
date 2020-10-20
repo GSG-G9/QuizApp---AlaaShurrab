@@ -160,3 +160,28 @@ let questionArray = [
         rghitAnswer : "aaaaaaaaaa"
     }
 ];
+
+const questionPage = document.querySelector("#questionPage");
+
+const questionGenerator = (questionNumber,counter) => {
+    questionBox.innerHTML=``;
+    let questionBox = document.createElement("div");
+    questionPage.appendChild(questionBox);
+    let questionBody = document.createElement("p");
+    questionBody.innerHTML=`Q${counter}:${questionArray[questionNumber].questionNo}?`;
+    questionBox.appendChild(questionBody);
+    answerGenerator(questionNumber,questionBox);
+    let nextQuestionBtn = document.createElement("div");
+    nextQuestionBtn.innerHTML=`<img src="https://cdn0.iconfinder.com/data/icons/ie_Financial_set/256/47.png" width="100%" height=100%>`;
+    
+}
+
+const answerGenerator = (questionNumber,questionBox) => {
+    for (let i = 0; i < 4; i++) {
+        let answerBox = document.createElement("div");
+        questionBox.appendChild(answerBox);
+        let answer = document.createElement("p");
+        answer.innerHTML=`${i}:${questionArray[questionNumber][`answer${++i}`]}`;
+
+    }
+}
