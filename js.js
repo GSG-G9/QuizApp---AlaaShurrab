@@ -165,13 +165,22 @@ let name ;
 let score = 0;
 let counter = 1;
 let clickCount = 0;
-
+let body = document.querySelector("body");
 let homePage = document.getElementById("homePage");
 let startPage = document.getElementById("startPage");
 let questionPage = document.getElementById("questionPage");
 let scorepage = document.getElementById("scorepage");
 let leaderBord = document.getElementById("leaderBord");
 let startBtn = document.getElementById("startBtn");
+
+
+const goToStart = () => {
+    startPage.classList.remove("hidden");
+    homePage.classList.add("hidden");
+    body.removeEventListener("click",goToStart);
+}
+body.addEventListener("click",goToStart);
+
 
 const openQuestionPage = () => {
     questionPage.classList.remove("hidden");
