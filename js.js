@@ -185,7 +185,7 @@ const openQuestionPage = () => {
 }
 
 const questionPageReset = () => {
-    name = "";
+    // name = "";
     score = 0;
     counter = 1;
     questionPage.innerHTML="";
@@ -217,7 +217,6 @@ const questionPageGenerator = () => {
        
 }
 
-
 const showScore = () => {
     let userName = document.createElement("h1");
     userName.innerHTML=name;
@@ -230,11 +229,19 @@ const showScore = () => {
     let leaderBordBtn = document.createElement("p");
     leaderBordBtn.innerHTML="Check Leader Bord";
     scoreDiv.appendChild(leaderBordBtn);
-
+    let tryAgainBtn = document.createElement("p");
+    tryAgainBtn.innerHTML="Try Again ?";
+    scorepage.appendChild(tryAgainBtn);
+    tryAgainBtn.addEventListener("click",tryAgain);
 
     questionPageReset();
    
 }
+const tryAgain = () => {
+    scorepage.innerHTML="";
+    openQuestionPage();
+}
+
 
 const questionGenerator = (questionIndex) => {
     let questionBox = document.createElement("div");
