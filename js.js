@@ -161,35 +161,113 @@ let questionArray = [
     }
 ];
 
+let name ;
+let score = 0;
+let counter = 1;
+
+let homePage = document.getElementById("homePage");
+let startPage = document.getElementById("startPage");
 let questionPage = document.getElementById("questionPage");
-// console.log(document.getElementById("questionPage"))
-const questionGenerator = (questionNumber,counter) => {
-    questionPage.innerHTML="";
-    // console.log(questionPage);
-    let questionBox = document.createElement("div");
-    // console.log(questionBox);
-    questionPage.appendChild(questionBox);
-    let questionBody = document.createElement("p");
-    questionBody.innerHTML=`Q${counter}:${questionArray[questionNumber].questionNo}?`;
-    questionBox.appendChild(questionBody);
-    answerGenerator(questionNumber,questionBox);
-    let nextQuestionBtn = document.createElement("div");
-    nextQuestionBtn.innerHTML=`<img src="https://cdn0.iconfinder.com/data/icons/ie_Financial_set/256/47.png" width="100%" height=100%>`;
+let scorepage = document.getElementById("scorepage");
+let leaderBord = document.getElementById("leaderBord");
+let startBtn = document.getElementById("startBtn");
+
+const openQuestionPage = () => {
+    questionPage.classList.remove("hidden");
+    homePage.classList.add("hidden");
+    startPage.classList.add("hidden");
+    name = regesterName();
+    questionPageGenerator();
 
 }
 
-const answerGenerator = (questionNumber,questionBox) => {
+const questionPageReset = () => {
+    counter = 1;
+    questionPage.innerHTML="";
+}
+
+const questionPageGenerator = () => {
+    questionPage.innerHTML="";
+    if (counter<11) {
+        let questionCounterBox = document.createElement("div");
+        questionPage.appendChild(questionCounterBox);
+        let questionCounterNumber = document.createElement("p");
+        questionCounterNumber.innerHTML=`${counter}/10`;
+        questionCounterBox.appendChild(questionCounterNumber);
+
+        // dont forget to add timer here*****************************
+
+        let questionIndex = Math.floor(Math.random()*20);
+        questionGenerator(questionIndex);
+    } else if (counter >= 11) {
+        questionPageReset();
+        scorepage.classList.remove("hidden");
+        questionPage.classList.add("hidden");
+        showScore();
+        // return;
+        // go to the score *******************************************
+    
+    }
+       
+}
+
+
+const showScore = () => {
+    let userName = document.createElement("h1");
+    userName.innerHTML=name;
+    scorepage.appendChild(userName);
+    let scoreDiv = document.createElement("div");
+    scorepage.appendChild(scoreDiv);
+    let scoreP = document.createElement("p");
+    scoreP.innerHTML=`${score*10}%`;
+    scoreDiv.appendChild(scoreP);
+    let leaderBordBtn = document.createElement("p");
+    leaderBordBtn.innerHTML="Check Leader Bord";
+    scoreDiv.appendChild(leaderBordBtn);
+   
+}
+
+const questionGenerator = (questionIndex) => {
+    let questionBox = document.createElement("div");
+    questionPage.appendChild(questionBox);
+    let questionBody = document.createElement("p");
+    questionBody.innerHTML=`Q${counter}:${questionArray[questionIndex].questionNo}?`;
+    questionBox.appendChild(questionBody);
+    answerGenerator(questionIndex,questionBox);
+    let nextQuestionBtn = document.createElement("div");
+    nextQuestionBtn.innerHTML=`<img src="https://cdn0.iconfinder.com/data/icons/ie_Financial_set/256/47.png" width="100px" height=100px>`;
+    nextQuestionBtn.addEventListener("click",questionPageGenerator);
+    questionPage.appendChild(nextQuestionBtn);
+    counter++;
+}
+
+const answerGenerator = (questionIndex,questionBox) => {
     for (let i = 0; i < 4; i++) {
-        // console.log(`${1+i}:${questionArray[questionNumber][`answer${1+i}`]}`);
+        // console.log(`${1+i}:${questionArray[questionIndex][`answer${1+i}`]}`);
+        let answerNumber = 1+i ;
         let answerBox = document.createElement("div");
         questionBox.appendChild(answerBox);
         let answer = document.createElement("p");
-        answer.innerHTML=`${1+i}:${questionArray[questionNumber][`answer${1+i}`]}`;
+        answer.innerHTML=`${answerNumber}:${questionArray[questionIndex][`answer${answerNumber}`]}`;
         answerBox.appendChild(answer);
     }
 }
 
-const isRightAnswer = (questionNumber,AnswerNumber) => {
-    
-}
-questionGenerator(0,1);
+
+const isRightAnswer = (questionIndex,answerNumber) => questionArray[questionIndex][`answer${answerNumber}`] == questionArray[questionNumber].rghitAnswer;
+
+const regesterName = () => document.getElementById("nameInput").value || "[     ]";
+
+
+
+
+
+startBtn.addEventListener("click",openQuestionPage);
+
+
+
+
+// questionPageGenerator();
+// questionPageGenerator();
+// questionGenerator(0);
+// console.log(isRightAnswer(1,3))
