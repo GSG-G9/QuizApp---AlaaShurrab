@@ -161,11 +161,13 @@ let questionArray = [
     }
 ];
 
-const questionPage = document.querySelector("#questionPage");
-
+let questionPage = document.getElementById("questionPage");
+// console.log(document.getElementById("questionPage"))
 const questionGenerator = (questionNumber,counter) => {
-    questionBox.innerHTML=``;
+    questionPage.innerHTML="";
+    // console.log(questionPage);
     let questionBox = document.createElement("div");
+    // console.log(questionBox);
     questionPage.appendChild(questionBox);
     let questionBody = document.createElement("p");
     questionBody.innerHTML=`Q${counter}:${questionArray[questionNumber].questionNo}?`;
@@ -173,15 +175,21 @@ const questionGenerator = (questionNumber,counter) => {
     answerGenerator(questionNumber,questionBox);
     let nextQuestionBtn = document.createElement("div");
     nextQuestionBtn.innerHTML=`<img src="https://cdn0.iconfinder.com/data/icons/ie_Financial_set/256/47.png" width="100%" height=100%>`;
-    
+
 }
 
 const answerGenerator = (questionNumber,questionBox) => {
     for (let i = 0; i < 4; i++) {
+        // console.log(`${1+i}:${questionArray[questionNumber][`answer${1+i}`]}`);
         let answerBox = document.createElement("div");
         questionBox.appendChild(answerBox);
         let answer = document.createElement("p");
-        answer.innerHTML=`${i}:${questionArray[questionNumber][`answer${++i}`]}`;
-
+        answer.innerHTML=`${1+i}:${questionArray[questionNumber][`answer${1+i}`]}`;
+        answerBox.appendChild(answer);
     }
 }
+
+const isRightAnswer = (questionNumber,AnswerNumber) => {
+    
+}
+questionGenerator(0,1);
