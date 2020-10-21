@@ -166,7 +166,7 @@ let score = 0;
 let counter = 1;
 let clickCount = 0;
 let timer = 30;
-let saveData
+let saveData = [];
 let body = document.querySelector("body");
 let homePage = document.getElementById("homePage");
 let startPage = document.getElementById("startPage");
@@ -272,6 +272,10 @@ const showScore = () => {
     let leaderBordBtn = document.createElement("p");
     leaderBordBtn.innerHTML="Check Leader Bord";
     scoreDiv.appendChild(leaderBordBtn);
+    leaderBordBtn.addEventListener("click",openLeaderBord);
+
+
+
     let tryAgainBtn = document.createElement("p");
     tryAgainBtn.innerHTML="Try Again ?";
     scorepage.appendChild(tryAgainBtn);
@@ -291,6 +295,41 @@ const showScore = () => {
     questionPageReset();
     
    
+}
+
+const openLeaderBord = () => {
+    leaderBord.innerHTML="";
+    let lastAdd = saveData.length-1
+
+    leaderBord.classList.remove("hidden");
+    scorepage.classList.add("hidden");
+    let title = document.createElement("h1");
+    title.innerHTML="last 10 Games";
+    leaderBord.appendChild(title);
+    let scoresBox = document.createElement("div");
+    leaderBord.appendChild(scoresBox);
+    // console.log(saveData[lastAdd]["name"]);
+    for (let i = 0; i < 10 && i < saveData.length ; i++) {
+        // let element = saveData[lastAdd]["name"];
+
+        // console.log(element);
+
+        let tagName = document.createElement("p");
+        tagName.innerHTML = saveData[lastAdd]["name"];
+        scoresBox.appendChild(tagName);
+
+        let tagScore = document.createElement("p");
+        tagScore.innerHTML = saveData[lastAdd]["score"];
+        scoresBox.appendChild(tagScore);
+
+        lastAdd--;
+    }
+
+    let tryAgainBtn = document.createElement("p");
+    tryAgainBtn.innerHTML="Try Again ?";
+    scorepage.appendChild(tryAgainBtn);
+    tryAgainBtn.addEventListener("click",tryAgain);
+
 }
 
 const tryAgain = () => {
@@ -366,9 +405,11 @@ const regesterName = () => document.getElementById("nameInput").value || "[     
 startBtn.addEventListener("click",openQuestionPage);
 
 
-
+// window.localStorage.clear();
+console.log(saveData);
 
 // questionPageGenerator();
 // questionPageGenerator();
 // questionGenerator(0);
 // console.log(isRightAnswer(1,3))
+// openLeaderBord();
