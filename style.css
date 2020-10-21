@@ -1,21 +1,8 @@
 body {
     padding: 0;
     margin: 0;
-    
 }
 
-#homePage {
-    display: none;
-}
-
-#startPage {
-    display: none;
-}
-
-#questionPage {
-    display: none;
-}
-
-#leaderBord {
+.hidden {
     display: none;
 }
