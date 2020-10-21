@@ -5,21 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quis game</title>
     <link rel="stylesheet" href="style.css">
-    <script src="js.js"></script>
+    
 </head>
 <body>
     <div id="homePage">
         <h1>Quiz Game</h1>
-        <p>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
+        <p>you'll be asked 10 question and you have to answer them correctly before the time runs out</p>
     </div>
-    <div id="startPage" class="hidden">
-        <input type="button" value="start">
+    <!-- <div id="startPage" class="hidden"> -->
+    <div id="startPage" >
+        <!-- <input type="text" id="nameInput" name="tweet" placeholder="what to do"> -->
+        <input type="text" class="nameInput" id="nameInput" placeholder="Please enter your name here">
+        <input type="button" class="startBtn" id="startBtn" value="start">
     </div>
-    <div id="questionPage" class="hidden">
+    <div id="questionPage" class="hidden questionPage">
+
+    </div>
+    <div id="scorepage" class="hidden">
 
     </div>
     <div id="leaderBord" class="hidden">
 
     </div>
 </body>
+<script src="js.js"></script>
 </html>
