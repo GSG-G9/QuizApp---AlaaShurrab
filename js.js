@@ -177,15 +177,13 @@ let startBtn = document.getElementById("startBtn");
 
 let isClick = false;
 
-
-
 const goToStart = () => {
     startPage.classList.remove("hidden");
     homePage.classList.add("hidden");
     body.removeEventListener("click",goToStart);
 }
-body.addEventListener("click",goToStart);
 
+body.addEventListener("click",goToStart);
 
 const openQuestionPage = () => {
     questionPage.classList.remove("hidden");
@@ -198,36 +196,37 @@ const openQuestionPage = () => {
 
 }
 
+const regesterName = () => document.getElementById("nameInput").value || "[     ]";
+
+startBtn.addEventListener("click",openQuestionPage);
+
 const questionPageReset = () => {
-    // name = "";
     score = 0;
     counter = 1;
     questionPage.innerHTML="";
 }
 
-
-// let timeId = setInterval(countdown,1000)
 const questionPageGenerator = () => {
     clickCount = 0;
     questionPage.innerHTML="";
     if (counter<11) {
         let questionCounterBox = document.createElement("div");
+        questionCounterBox.id = "questionCounterBox";
         questionPage.appendChild(questionCounterBox);
         let questionCounterNumber = document.createElement("p");
         questionCounterNumber.innerHTML=`${counter}/10`;
         questionCounterBox.appendChild(questionCounterNumber);
 
-        // dont forget to add timer here*****************************
+        // add timer here
         
+        let questionTimerBox = document.createElement("div");
+        questionTimerBox.id = "questionTimerBox";
+        questionPage.appendChild(questionTimerBox);
         let questionTimer = document.createElement("p");
         questionTimer.id = "questionTimer";
-        questionCounterBox.appendChild(questionTimer);
+        questionTimerBox.appendChild(questionTimer);
         timer = 10;
-        // let questionTimer = document.getElementById("questionTimer");
-        
         let timeId = setInterval(() => {
-            
-            
             if (timer == -1 || isClick) {
                 isClick = false;
                 clearInterval(timeId);
@@ -236,135 +235,43 @@ const questionPageGenerator = () => {
                 questionTimer.innerHTML = timer;
                 timer--;
             }
-            // if (counter>=10) {
-            //     timer = -1;
-            //     questionTimer.innerHTML = "";
-            // }
         },1000)
-
-        
 
         questionTimer.innerHTML=timer;
 
         let questionIndex = Math.floor(Math.random()*20);
         questionGenerator(questionIndex);
     } else if (counter >= 11) {
-        // clearTimeout(timeId);
         scorepage.classList.remove("hidden");
         questionPage.classList.add("hidden");
+        
+        // go to the score 
+
         showScore();
-        // return;
-        // go to the score *******************************************
     
     }
        
 }
 
-const showScore = () => {
-    let userName = document.createElement("h1");
-    userName.innerHTML=name;
-    scorepage.appendChild(userName);
-    let scoreDiv = document.createElement("div");
-    scorepage.appendChild(scoreDiv);
-    let scoreP = document.createElement("p");
-    scoreP.innerHTML=`${score*10}%`;
-    scoreDiv.appendChild(scoreP);
-    let leaderBordBtn = document.createElement("p");
-    leaderBordBtn.innerHTML="Check Leader Bord";
-    scoreDiv.appendChild(leaderBordBtn);
-    leaderBordBtn.addEventListener("click",openLeaderBord);
-
-
-
-    let tryAgainBtn = document.createElement("p");
-    tryAgainBtn.innerHTML="Try Again ?";
-    scorepage.appendChild(tryAgainBtn);
-    tryAgainBtn.addEventListener("click",tryAgain);
-    if (!window.localStorage.getItem('saveData')) {
-        saveData = [];
-    } else {
-        saveData = JSON.parse(window.localStorage.getItem('saveData'));
-        window.localStorage.clear();
-    }
-    saveData.push({
-        name: name,
-        score:`${score*10}%`
-    })
-    window.localStorage.setItem('saveData', JSON.stringify(saveData));
-    console.log(saveData);
-    questionPageReset();
-    
-   
-}
-
-const openLeaderBord = () => {
-    leaderBord.innerHTML="";
-    let lastAdd = saveData.length-1
-
-    leaderBord.classList.remove("hidden");
-    scorepage.classList.add("hidden");
-    let title = document.createElement("h1");
-    title.innerHTML="last 10 Games";
-    leaderBord.appendChild(title);
-    let scoresBox = document.createElement("div");
-    leaderBord.appendChild(scoresBox);
-    // console.log(saveData[lastAdd]["name"]);
-    for (let i = 0; i < 10 && i < saveData.length ; i++) {
-        // let element = saveData[lastAdd]["name"];
-
-        // console.log(element);
-
-        let tagName = document.createElement("p");
-        tagName.innerHTML = saveData[lastAdd]["name"];
-        scoresBox.appendChild(tagName);
-
-        let tagScore = document.createElement("p");
-        tagScore.innerHTML = saveData[lastAdd]["score"];
-        scoresBox.appendChild(tagScore);
-
-        lastAdd--;
-    }
-
-    let tryAgainBtn = document.createElement("p");
-    tryAgainBtn.innerHTML="Try Again ?";
-    scorepage.appendChild(tryAgainBtn);
-    tryAgainBtn.addEventListener("click",tryAgain);
-
-}
-
-const tryAgain = () => {
-    scorepage.innerHTML="";
-    openQuestionPage();
-}
-
-
 const questionGenerator = (questionIndex) => {
     let questionBox = document.createElement("div");
+    questionBox.id = "questionBox"
     questionPage.appendChild(questionBox);
     let questionBody = document.createElement("p");
     questionBody.innerHTML=`Q${counter}:${questionArray[questionIndex].questionNo}?`;
     questionBox.appendChild(questionBody);
     answerGenerator(questionIndex,questionBox);
-    // let nextQuestionBtn = document.createElement("div");
-    // nextQuestionBtn.innerHTML=`<img src="https://cdn0.iconfinder.com/data/icons/ie_Financial_set/256/47.png" width="100px" height=100px>`;
-    // nextQuestionBtn.addEventListener("click",()=>{
-    //     console.log(isClick);
-    //     isClick = true;
-    //     questionPageGenerator();
-    //     console.log("eeeee"+isClick);
-
-    // });
-    // questionPage.appendChild(nextQuestionBtn);
+    
     counter++;
 }
 
 const answerGenerator = (questionIndex,questionBox) => {
     let answerCluster = document.createElement("div")
-    questionBox.appendChild(answerCluster)
-    // answerCluster.addEventListener("click",answerShow)
+    questionBox.appendChild(answerCluster);
     for (let i = 0; i < 4; i++) {
         let answerNumber = 1+i ;
         let answerBox = document.createElement("div");
+        answerBox.id = "answerBox"+answerNumber;
         answerCluster.appendChild(answerBox);
         let answer = document.createElement("p");
         answer.innerHTML=`${answerNumber}:${questionArray[questionIndex][`answer${answerNumber}`]}`;
@@ -394,22 +301,73 @@ const rightAnswer = (questionIndex,answerNumber) => {
 }
 
 
-// const isRightAnswer = (questionIndex,answerNumber) => questionArray[questionIndex][`answer${answerNumber}`] == questionArray[questionNumber].rghitAnswer;
+const showScore = () => {
+    let userName = document.createElement("h1");
+    userName.innerHTML=name;
+    scorepage.appendChild(userName);
+    let scoreDiv = document.createElement("div");
+    scorepage.appendChild(scoreDiv);
+    let scoreP = document.createElement("p");
+    scoreP.innerHTML=`${score*10}%`;
+    scoreDiv.appendChild(scoreP);
+    let leaderBordBtn = document.createElement("p");
+    leaderBordBtn.innerHTML="Check Leader Bord";
+    scoreDiv.appendChild(leaderBordBtn);
+    leaderBordBtn.addEventListener("click",openLeaderBord);
 
-const regesterName = () => document.getElementById("nameInput").value || "[     ]";
+    let tryAgainBtn = document.createElement("p");
+    tryAgainBtn.innerHTML="Try Again ?";
+    scorepage.appendChild(tryAgainBtn);
+    tryAgainBtn.addEventListener("click",tryAgain);
+    if (!window.localStorage.getItem('saveData')) {
+        saveData = [];
+    } else {
+        saveData = JSON.parse(window.localStorage.getItem('saveData'));
+        window.localStorage.clear();
+    }
+    saveData.push({
+        name: name,
+        score:`${score*10}%`
+    })
+    window.localStorage.setItem('saveData', JSON.stringify(saveData));
+    console.log(saveData);
+    questionPageReset();
+}
+
+const openLeaderBord = () => {
+    leaderBord.innerHTML="";
+    let lastAdd = saveData.length-1
+
+    leaderBord.classList.remove("hidden");
+    scorepage.classList.add("hidden");
+    let title = document.createElement("h1");
+    title.innerHTML="last 10 Games";
+    leaderBord.appendChild(title);
+    let scoresBox = document.createElement("div");
+    leaderBord.appendChild(scoresBox);
+    for (let i = 0; i < 10 && i < saveData.length ; i++) {
+        let tagName = document.createElement("p");
+        tagName.innerHTML = saveData[lastAdd]["name"];
+        scoresBox.appendChild(tagName);
+
+        let tagScore = document.createElement("p");
+        tagScore.innerHTML = saveData[lastAdd]["score"];
+        scoresBox.appendChild(tagScore);
+
+        lastAdd--;
+    }
+
+    let tryAgainBtn = document.createElement("p");
+    tryAgainBtn.innerHTML="Try Again ?";
+    scorepage.appendChild(tryAgainBtn);
+    tryAgainBtn.addEventListener("click",tryAgain);
+
+}
+
+const tryAgain = () => {
+    scorepage.innerHTML="";
+    openQuestionPage();
+}
 
 
-
-
-
-startBtn.addEventListener("click",openQuestionPage);
-
-
-// window.localStorage.clear();
-console.log(saveData);
-
-// questionPageGenerator();
-// questionPageGenerator();
-// questionGenerator(0);
-// console.log(isRightAnswer(1,3))
-// openLeaderBord();
+``

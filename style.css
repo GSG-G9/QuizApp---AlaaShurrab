@@ -1,6 +1,12 @@
 body {
     padding: 0;
     margin: 0;
+    height: 920px;
+    width: 1920px;
+    left: 2770px;
+    top: -369px;
+    border-radius: 0px;
+    background: linear-gradient(180deg, #0066FF -10.22%, rgba(65, 35, 186, 0.744792) 9.22%, rgba(98, 46, 139, 0.78) 36.04%, rgba(163, 72, 115, 0.62) 66.21%, rgba(240, 0, 0, 0.58) 96.38%, rgba(31, 138, 199, 0) 118.5%);
 }
 
 .hidden {
@@ -13,3 +19,316 @@ body {
 .wrong {
     background-color: red;
 }
+
+#homePage>h1{
+    position: absolute;
+    color: red;
+    /* color: linear-gradient(180deg, #ED2105 0%, rgba(255, 245, 4, 0.817708) 24.48%, rgba(66, 255, 0, 0.510417) 48.96%, rgba(0, 255, 224, 0.317708) 68.23%, rgba(0, 178, 255, 0.151042) 84.9%, rgba(0, 0, 0, 0) 100%); */
+    height: 137px;
+    width: 517px;
+    left: 701px;
+    top: 196px;
+    border-radius: nullpx;
+    font-family: Roboto Slab;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 132px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+#homePage>p {
+    position: absolute;
+    height: 96px;
+    width: 1105px;
+    left: 408px;
+    top: 402px;
+    border-radius: nullpx;
+    font-family: Roboto Slab;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #A3F2F6;
+}
+#nameInput{
+    position: absolute;
+    height: 100px;
+    width: 1034px;
+    left: 443px;
+    top: 286px;
+    padding-left: 40px;
+    border-radius: 40px;
+    background: linear-gradient(180deg, rgba(0, 194, 255, 0.44) 0%, rgba(0, 194, 255, 0) 127.59%);
+    font-family: Roboto;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 59px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #12EAF8;
+}
+
+#startBtn {
+    position: absolute;
+    width: 400px;
+    height: 150px;
+    left: 760px;
+    top: 587px;
+
+    background: linear-gradient(146.68deg, rgba(250, 255, 0, 0.49) 51.52%, rgba(250, 255, 0, 0) 96.85%);
+    border-radius: 100px;
+
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100px;
+    line-height: 132px;
+}
+
+#questionCounterBox {
+    position: absolute;
+    width: 350px;
+    height: 140px;
+    left: 71px;
+    top: 78px;
+
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 230, 0, 0.39) 0%, rgba(253, 243, 152, 0) 100%);
+    border-radius: 50px;
+}
+
+#questionCounterBox>p {
+    margin: 0%;
+    position: absolute;
+    width: 147px;
+    height: 80px;
+    left: 120px;
+    top: 30px;
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 79px;
+    /* identical to box height */
+    
+    color: #56CCFF;
+    
+}
+
+#questionTimerBox { 
+
+    position: absolute;
+    width: 350px;
+    height: 140px;
+    left: 1421px;
+    top: 78px;
+
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 0, 0, 0.39) 0%, rgba(253, 243, 152, 0) 100%);
+    border-radius: 50px;
+
+}
+
+#questionTimerBox>p {
+    margin: 0%;
+    position: absolute;
+    width: 70px;
+    height: 80px;
+    left: 120px;
+    top: 30px;
+
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 79px;
+        /* identical to box height */
+
+    color: #FFB905;
+}
+
+#questionBox {
+
+    position: absolute;
+    width: 1000px;
+    height: 400px;
+    left: 421px;
+    top: 253px;
+
+    background: rgba(0, 148, 255, 0.21);
+    border: 1px solid #000AFF;
+    border-radius: 40px;
+}
+
+#questionBox>p {
+    margin: 0%;
+    position: absolute;
+    width: 875px;
+    height: 125px;
+    left: 40px;
+    top: 020px;
+
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 66px;
+
+    color: #002586;
+}
+
+#answerBox1 {
+    position: absolute;
+    width: 480px;
+    height: 90px;
+    left: 11px;
+    top: 200px;
+
+    background: linear-gradient(270deg, #0094FF 0%, rgba(255, 230, 0, 0.93) 169.27%);
+    border: 1px solid #000AFF;
+    border-radius: 40px;
+
+}
+
+#answerBox2 {
+    position: absolute;
+    width: 480px;
+    height: 90px;
+    left: 11px;
+    top: 300px;
+
+    background: linear-gradient(270deg, #0094FF 0%, rgba(255, 230, 0, 0.93) 169.27%);
+    border: 1px solid #000AFF;
+    border-radius: 40px;
+        
+}
+
+#answerBox3 {
+    position: absolute;
+    width: 480px;
+    height: 90px;
+    left: 511px;
+    top: 200px;
+
+    background: linear-gradient(90deg, #0094FF 0%, rgba(255, 230, 0, 0.93) 179.37%);
+    border: 1px solid #000AFF;
+    border-radius: 40px;
+}
+
+#answerBox4 {
+    
+    position: absolute;
+    width: 480px;
+    height: 90px;
+    left: 511px;
+    top: 300px;
+
+    background: linear-gradient(90deg, #0094FF 0%, rgba(255, 230, 0, 0.93) 179.37%);
+    border: 1px solid #000AFF;
+    border-radius: 40px;
+
+}
+
+#answerBox1>p {
+    margin: 0%;
+    padding-left: 30px;
+    position: absolute;
+    width: 450px;
+    height: 90px;
+    /* width: 406px;
+    height: 55px; */
+    /* left: 0px;
+    top: 0px; */
+    border-radius: 40px;
+
+    /* background-color: red; */
+
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 79px;
+
+    color: #0066FF;
+
+}
+
+#answerBox2>p {
+    margin: 0%;
+    padding-left: 30px;
+    position: absolute;
+    width: 450px;
+    height: 90px;
+    /* width: 405px;
+    height: 61px; */
+    /* left: 30px;
+    top: 0px; */
+    border-radius: 40px;
+
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 79px;
+
+    color: #0066FF;
+
+}
+
+#answerBox3>p {
+    margin: 0%;
+    padding-left: 30px;
+    position: absolute;
+    width: 450px;
+    height: 90px;
+    /* width: 406px;
+    height: 55px;
+    left: 30px;
+    top: 0px; */
+    border-radius: 40px;
+
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 79px;
+
+    color: #0066FF;
+}
+
+#answerBox4>p {
+    margin: 0%;
+    padding-left: 30px;
+    position: absolute;
+    width: 450px;
+    height: 90px;
+    /* width: 406px;
+    height: 55px;
+    left: 30px;
+    top: 0px; */
+    border-radius: 40px;
+
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 79px;
+
+    color: #0066FF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
