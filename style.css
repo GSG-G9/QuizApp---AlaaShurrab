@@ -320,6 +320,80 @@ body {
     color: #0066FF;
 }
 
+#userNameTitle {
+    position: absolute;
+    width: 517px;
+    height: 137px;
+    left: 701px;
+    top: 196px;
+
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100px;
+    line-height: 132px;
+
+}
+
+#scoreTitle {
+
+    position: absolute;
+    width: 232px;
+    height: 137px;
+    left: 844px;
+    top: 382px;
+
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100px;
+    line-height: 132px;
+
+}
+
+#leaderBordBtn {
+    padding-left: 60px;
+    /* padding-top: 20px; */
+    position: absolute;
+    width: 361px;
+    height: 124px;
+    left: 1076px;
+    top: 677px;
+
+    background: linear-gradient(83.84deg, #0500FF 0%, rgba(5, 0, 255, 0) 99.17%);
+    border-radius: 100px 0px;
+
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 66px;
+
+    color: #000000;
+
+}
+
+#tryAgainBtn {
+    padding-left: 50px;
+    position: absolute;
+    width: 361px;
+    height: 124px;
+    left: 483px;
+    top: 677px;
+
+    background: linear-gradient(276.73deg, #0500FF 0%, rgba(5, 0, 255, 0) 100%);
+    border-radius: 0px 100px;
+
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 66px;
+
+    color: #000000;
+
+}
+
 
 
 

@@ -303,20 +303,24 @@ const rightAnswer = (questionIndex,answerNumber) => {
 
 const showScore = () => {
     let userName = document.createElement("h1");
+    userName.id = "userNameTitle";
     userName.innerHTML=name;
     scorepage.appendChild(userName);
     let scoreDiv = document.createElement("div");
     scorepage.appendChild(scoreDiv);
     let scoreP = document.createElement("p");
+    scoreP.id = "scoreTitle"
     scoreP.innerHTML=`${score*10}%`;
     scoreDiv.appendChild(scoreP);
     let leaderBordBtn = document.createElement("p");
-    leaderBordBtn.innerHTML="Check Leader Bord";
+    leaderBordBtn.id = "leaderBordBtn"
+    leaderBordBtn.innerHTML="Leader Bord";
     scoreDiv.appendChild(leaderBordBtn);
     leaderBordBtn.addEventListener("click",openLeaderBord);
 
     let tryAgainBtn = document.createElement("p");
-    tryAgainBtn.innerHTML="Try Again ?";
+    tryAgainBtn.id = "tryAgainBtn"
+    tryAgainBtn.innerHTML="Try Again";
     scorepage.appendChild(tryAgainBtn);
     tryAgainBtn.addEventListener("click",tryAgain);
     if (!window.localStorage.getItem('saveData')) {
